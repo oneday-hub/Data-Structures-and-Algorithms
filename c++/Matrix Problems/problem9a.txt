@@ -1,0 +1,19 @@
+9️⃣ DFS Pattern You Just Learned
+
+This is a very powerful template:
+
+int dfs(grid,i,j)
+{
+    if(invalid) return 0;
+
+    mark visited
+
+    area = 1
+
+    for(all directions)
+        area += dfs(...)
+
+    return area
+}
+
+This appears in many advanced grid problems.

@@ -1,0 +1,76 @@
+notes : sum tree 
+
+No worries — you're asking a very good question! Let me break it down clearly for you so 
+you can understand how we're managing sumtree and totalsum in the isSumFastTree() function.
+
+🎯 Goal of the Function
+We want to check:
+
+✅ Is the current subtree a sum tree?
+
+🔢 What is the total sum of the subtree rooted at the current node?
+
+To do this in one traversal, we return a pair<bool, int>:
+pair<isSumTree, subtreeSum>
+
+
+🔍 What Are sumtree and totalsum?
+Let's understand them one by one:
+
+✅ 1. sumtree
+This is a boolean value that tells:
+👉 "Is the current subtree a sum tree or not?"
+
+To say that the current root is a sum tree node, 3 conditions must be true:
+
+bool sumtree = 
+    left.first && right.first &&      // both left and right subtrees are sum trees
+    (left.second + right.second == root->data);  // root data equals left+right subtree sum
+
+So for example:
+        10
+       /  \
+      4    6
+left subtree sum = 4
+
+right subtree sum = 6
+
+root = 10
+
+left.first == true  // because 4 is a leaf (sum tree)
+right.first == true // 6 is also a leaf
+(4 + 6 == 10) == true
+
+=> sumtree = true
+
+
+🔢 2. totalsum
+This is the total sum of all values in the subtree rooted at this node.
+
+The formula is:
+int totalsum = left.second + right.second + root->data;
+
+        10
+       /  \
+      4    6
+left.second = 4
+
+right.second = 6
+
+root->data = 10
+
+So totalsum = 4 + 6 + 10 = 20
+
+Why do we return this? Because when we go up to the parent node, 
+it needs the sum of its left and right subtrees.
+
+💡 Why Both Values Are Needed?
+When checking if a tree is a sum tree, you need:
+
+To know the sum of left and right subtrees (so you need totalsum)
+
+To ensure both subtrees are already valid sum trees (so you need sumtree)
+
+That’s why the return type is:
+return {sumtree, totalsum};
+

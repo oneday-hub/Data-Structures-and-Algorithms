@@ -1,0 +1,28 @@
+// topic : Shortest path in Directed Acyclic graphs (DAG) : 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Graph{
+    public : 
+    unordered_map<int, list<pair<int, int>> >adj;
+
+    void addEdge(int u, int v, int weight){
+        pair<int, int> p = make_pair(v, weight);
+        adj[u].push_back(p);
+    }
+    void printadj(){
+        for(auto i : adj){
+            cout<<i.first<<" -> ";
+            for(auto j :i.second){
+                cout<<"{"<<j.first<<","<<j.second<<"}, ";
+            }
+            cout<<endl;
+        }
+    }
+};
+
+int main() {
+    
+    return 0;
+}

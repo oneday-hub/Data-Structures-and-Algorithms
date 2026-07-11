@@ -1,0 +1,22 @@
+| #  | Pattern Key        | State Shape      | Classic Problem                |
+| -- | ------------------ | ---------------- | ------------------------------ |
+| 1  | Linear 1D          | `dp[i]`          | House Robber                   |
+| 2  | LIS                | `dp[i]`          | Longest Increasing Subsequence |
+| 3  | Kadane             | `dp[i]`          | Maximum Subarray               |
+| 4  | LCS                | `dp[i][j]`       | Longest Common Subsequence     |
+| 5  | Edit Distance      | `dp[i][j]`       | Edit Distance                  |
+| 6  | String Match       | `dp[i][j]`       | Wildcard Matching              |
+| 7  | 0/1 Knapsack       | `dp[i][w]`       | Knapsack                       |
+| 8  | Unbounded Knapsack | `dp[w]`          | Coin Change                    |
+| 9  | Subset Sum         | `dp[i][s]`       | Partition Equal Subset Sum     |
+| 10 | Grid Path          | `dp[i][j]`       | Minimum Path Sum               |
+| 11 | Grid + State       | `dp[i][j][k]`    | Cherry Pickup                  |
+| 12 | Interval           | `dp[i][j]`       | Burst Balloons                 |
+| 13 | Palindrome         | `dp[i][j]`       | Palindrome (LCS-based)         |
+| 14 | Stock FSM          | `dp[i][hold]`    | Best Time to Buy/Sell Stock IV |
+| 15 | State Machine      | `dp[i][state]`   | Paint House                    |
+| 16 | Bitmask            | `dp[mask][i]`    | Traveling Salesman Problem     |
+| 17 | Tree DP            | `dp[node][0/1]`  | Maximum Independent Set        |
+| 18 | Digit DP           | `dp[pos][tight]` | Count Numbers                  |
+| 19 | DP + Binary Search | `tails[]`        | LIS (O(n log n))               |
+| 20 | Broken Profile     | `dp[col][mask]`  | Grid Tiling                    |

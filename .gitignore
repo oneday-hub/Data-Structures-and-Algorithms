@@ -1,0 +1,29 @@
+# Compiled binaries and build outputs
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
+build/
+bin/
+obj/
+dist/
+target/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local editor and competitive-programming files
+.vscode/
+.cph/
+*.code-workspace
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

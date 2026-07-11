@@ -1,0 +1,158 @@
+Top 20 DP Patterns & States
+
+🔢 Linear / Sequence DP
+1. Linear DP (1D)
+
+State: dp[i] = answer for first i elements
+Problems: Fibonacci, Climbing Stairs, House Robber
+
+cppdp[i] = max(dp[i-1], dp[i-2] + nums[i]); // House Robber
+2. Longest Increasing Subsequence (LIS)
+
+State: dp[i] = LIS ending at index i
+Problems: LIS, Russian Doll Envelopes
+
+cppdp[i] = max(dp[j] + 1) for all j < i where nums[j] < nums[i];
+3. Kadane's (Max Subarray)
+
+State: dp[i] = max subarray ending at i
+Problems: Max Subarray, Max Product Subarray
+
+cppdp[i] = max(nums[i], dp[i-1] + nums[i]);
+
+🧵 Two-String / Subsequence DP
+4. Longest Common Subsequence (LCS)
+
+State: dp[i][j] = LCS of a[0..i] and b[0..j]
+Problems: LCS, Edit Distance, Shortest Common Supersequence
+
+cppdp[i][j] = (a[i]==b[j]) ? dp[i-1][j-1]+1 : max(dp[i-1][j], dp[i][j-1]);
+5. Edit Distance
+
+State: dp[i][j] = min operations to convert a[0..i] → b[0..j]
+
+cppdp[i][j] = min({dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1] + (a[i]!=b[j])});
+6. String Matching / Wildcards
+
+State: dp[i][j] = does pattern p[0..j] match s[0..i]
+Problems: Regex Match, Wildcard Matching
+
+cppdp[i][j] = (p[j]=='*') ? dp[i-1][j] || dp[i][j-1] : dp[i-1][j-1] && match;
+
+🎒 Knapsack Variants
+7. 0/1 Knapsack
+
+State: dp[i][w] = max value using first i items with weight ≤ w
+
+cppdp[i][w] = max(dp[i-1][w], val[i] + dp[i-1][w - wt[i]]);
+8. Unbounded Knapsack
+
+Item can be picked unlimited times
+Problems: Coin Change 2, Rod Cutting
+
+cppdp[w] = max(dp[w], val[i] + dp[w - wt[i]]); // same row reuse
+9. Subset Sum / Partition
+
+State: dp[i][s] = can we form sum s using first i elements
+Problems: Partition Equal Subset, Target Sum
+
+cppdp[i][s] = dp[i-1][s] || dp[i-1][s - nums[i]];
+
+🟦 Grid DP
+10. Grid Path DP
+
+State: dp[i][j] = answer at cell (i, j)
+Problems: Unique Paths, Min Path Sum, Dungeon Game
+
+cppdp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
+11. Grid with Obstacles / Constraints
+
+State: dp[i][j][state] — add dimension for extra constraint
+Problems: Cherry Pickup, Paint House
+
+cppdp[i][j][k] = min cost reaching (i,j) with k cherries
+
+🔁 Interval DP
+12. Interval DP
+
+State: dp[i][j] = answer for subarray/range [i..j]
+Problems: Matrix Chain Multiplication, Burst Balloons, Palindrome Partitioning
+
+cppfor (int len = 2; len <= n; len++)       // iterate by length
+    for (int i = 0; i+len-1 < n; i++) {
+        int j = i + len - 1;
+        for (int k = i; k < j; k++)      // try all split points
+            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + cost);
+    }
+13. Palindrome DP
+
+State: dp[i][j] = is s[i..j] a palindrome / min cuts
+Problems: Longest Palindromic Subsequence, Min Cut Palindrome
+
+cppdp[i][j] = (s[i]==s[j]) && dp[i+1][j-1];
+
+🔀 State Machine DP
+14. Stock Buy/Sell (FSM)
+
+State: dp[i][hold][k] = profit on day i, holding or not, k transactions
+Problems: Best Time to Buy Stock I/II/III/IV, Cooldown
+
+cpphold[i] = max(hold[i-1], -prices[i]);
+sold[i] = max(sold[i-1], hold[i-1] + prices[i]);
+15. DP on States (On/Off)
+
+State: dp[i][state] where state encodes mode/phase
+Problems: Paint House, Wiggle Subsequence, Jump Game
+
+cppdp[i][0] = min(dp[i-1][1], dp[i-1][2]) + cost[i][0]; // Paint House
+
+🔣 Bitmask DP
+16. Bitmask DP
+
+State: dp[mask] or dp[mask][i] = answer for subset encoded in mask
+Problems: Travelling Salesman, Assign Tasks, Minimum XOR Sum
+
+cppdp[mask | (1<<j)][j] = min(dp[mask | (1<<j)][j], dp[mask][i] + dist[i][j]);
+
+🌳 Tree DP
+17. Tree DP
+
+State: dp[node][0/1] = answer for subtree rooted at node (included or not)
+Problems: Max Independent Set on Tree, Diameter of Tree
+
+cppdp[node][1] = 1 + sum(dp[child][0]); // include node
+dp[node][0] = sum(max(dp[child][0], dp[child][1])); // exclude node
+
+🔢 Digit DP
+18. Digit DP
+
+State: dp[pos][tight][sum] = count of numbers with constraints
+Problems: Count numbers with digit sum = k, No repeated digits
+
+cppsolve(pos, tight, sum) {
+    if (pos == n) return sum == target;
+    int limit = tight ? digit[pos] : 9;
+    for (int d = 0; d <= limit; d++)
+        ans += solve(pos+1, tight && d==limit, sum+d);
+}
+
+📈 Divide & Conquer / Optimization DP
+19. DP + Binary Search Optimization (LIS in O(n log n))
+
+Maintain a tails[] array with binary search
+
+cppfor (int x : nums) {
+    auto it = lower_bound(tails.begin(), tails.end(), x);
+    if (it == tails.end()) tails.push_back(x);
+    else *it = x;
+}
+return tails.size(); // LIS length
+20. DP on Profiles / Broken Profile (Advanced)
+
+State: dp[col][profile] — used in tiling problems
+Problems: Tiling with dominoes, m×n grid tiling
+
+cpp// Profile encodes which cells in current column are already filled
+dp[col][new_profile] = sum of dp[col-1][old_profile];
+
+
