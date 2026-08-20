@@ -1,0 +1,139 @@
+/*
+What is Prefix Sum?
+
+A prefix sum stores the sum of all elements from the beginning of the array up to a certain index.
+
+Suppose:
+
+nums = [2, 4, 1, 6, 3]
+
+Prefix sum array : 
+| Index | nums | Prefix Sum |
+| ----: | ---: | ---------: |
+|     0 |    2 |          2 |
+|     1 |    4 |          6 |
+|     2 |    1 |          7 |
+|     3 |    6 |         13 |
+|     4 |    3 |         16 |
+So:
+
+prefix[0] = 2
+prefix[1] = 2 + 4 = 6
+prefix[2] = 2 + 4 + 1 = 7
+...
+Why do we need it?
+
+Suppose someone asks:
+
+What is the sum from index 1 to 3?
+
+Without prefix sum:
+
+4 + 1 + 6 = 11
+
+Time:
+
+O(n)
+
+With prefix sum:
+
+sum(1...3) = prefix[3] - prefix[0]
+13 - 2 = 11
+
+Time:
+
+O(1)
+
+This is the biggest advantage.
+
+Formula
+
+If:
+
+l = left index
+r = right index
+
+Then:
+
+Case 1: l == 0
+sum = prefix[r]
+Case 2: l > 0
+sum = prefix[r] - prefix[l - 1]
+
+This is the most important prefix sum formula.
+
+Building Prefix Sum
+vector<int> prefix(n);
+
+prefix[0] = nums[0];
+
+for(int i = 1; i < n; i++) {
+    prefix[i] = prefix[i - 1] + nums[i];
+}
+
+Time:
+
+O(n)
+Example
+nums = [5,2,7,3,6]
+
+Prefix:
+
+5 7 14 17 23
+
+Find sum from index:
+
+2 to 4
+
+Answer:
+
+23 - 7 = 16
+
+Check:
+
+7 + 3 + 6 = 16
+
+Correct.
+
+When should you think of Prefix Sum?
+
+Whenever you see:
+
+Range Sum
+Continuous subarray sum
+Multiple sum queries
+Count subarrays
+Equal 0s and 1s
+Subarray sum equals K
+Common Prefix Sum Patterns
+Pattern 1
+
+Range Sum Query
+
+sum(l...r)
+Pattern 2
+
+Subarray Sum Equals K
+
+Use:
+
+Prefix Sum + Hash Map
+Pattern 3
+
+Continuous Subarray Sum
+
+Use:
+
+Prefix Sum + Modulo
+Pattern 4
+
+Equal 0s and 1s
+
+Convert:
+
+0 → -1
+1 → +1
+
+Then use prefix sum.
+
+*/
