@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-void prepareadj( unordered_map<int, list<int>> &adj,vector<pair<int, int>> &edges){
+void prepareadj( unordered_map<int, list<int>> &adj, vector<pair<int, int>> &edges){
     for(int i = 0; i<edges.size(); i++){
         int u = edges[i].first;
         int v = edges[i].second;

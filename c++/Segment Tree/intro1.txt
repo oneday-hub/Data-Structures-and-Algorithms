@@ -1,0 +1,58 @@
+The Complete Roadmap
+
+I would organize your learning like this:
+SEGMENT TREE
+
+│
+├── 1. Fundamentals
+│   ├── Why Segment Tree?
+│   ├── Range Query
+│   ├── Updates
+│   └── Complexity
+│
+├── 2. Construction
+│   ├── Segments
+│   ├── Tree structure
+│   ├── Array representation
+│   └── Build
+│
+├── 3. Basic Operations
+│   ├── Range Query
+│   │   ├── No overlap
+│   │   ├── Complete overlap
+│   │   └── Partial overlap
+│   │
+│   └── Point Update
+│
+├── 4. Basic Applications
+│   ├── Sum
+│   ├── Minimum
+│   ├── Maximum
+│   ├── GCD
+│   └── XOR
+│
+├── 5. Advanced Queries
+│   ├── First position
+│   ├── Last position
+│   ├── K-th element
+│   └── Custom node information
+│
+├── 6. Lazy Propagation
+│   ├── Range Update
+│   ├── Range Add
+│   ├── Range Assignment
+│   └── Multiple lazy operations
+│
+├── 7. Advanced Segment Trees
+│   ├── Maximum subarray
+│   ├── Frequency
+│   ├── Order statistics
+│   └── Complex merge operations
+│
+├── 8. Persistent Segment Tree
+│
+├── 9. Dynamic Segment Tree
+│
+├── 10. 2D Segment Tree
+│
+└── 11. Segment Tree Beats

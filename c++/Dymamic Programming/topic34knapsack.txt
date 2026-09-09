@@ -1,0 +1,43 @@
+The roadmap I'd recommend for you
+
+Since you're currently learning DP patterns:
+
+                  KNAPSACK
+                    │
+          ┌─────────┴─────────┐
+          ↓                   ↓
+       0/1 Knapsack       Unbounded
+          │                   │
+          ↓                   ↓
+      Subset Sum          Coin Change
+          │
+    ┌─────┼──────────┐
+    ↓     ↓          ↓
+ Equal   Count     Min Difference
+Partition Subsets
+
+Don't jump directly into all of them.
+
+I'd suggest:
+
+1. 0/1 Knapsack
+
+→ recursion
+
+→ memoization
+
+→ tabulation
+
+→ space optimized
+
+2. Subset Sum
+
+3. Equal Sum Partition
+
+4. Count Subsets
+
+5. Minimum Subset Sum Difference
+
+6. Unbounded Knapsack
+
+7. Coin Change

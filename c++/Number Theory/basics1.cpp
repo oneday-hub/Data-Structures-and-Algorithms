@@ -40,7 +40,7 @@ vector<ll> getFactors(ll n) {
     for (ll i = 1; i * i <= n; i++) {
         if (n % i == 0) {
             factors.push_back(i);
-            if (i != n / i)
+            if (i != n / i)                                      
                 factors.push_back(n / i);
         }
     }
