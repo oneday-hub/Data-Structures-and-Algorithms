@@ -24,6 +24,80 @@ Output: 1
 #include <bits/stdc++.h>
 using namespace std;
 
+
+vector<int> nextSmallerElement(vector<int> &heights, int n) {
+
+        stack<int> s;
+        s.push(-1);
+
+        vector<int> ans(n);
+
+        for (int i = n - 1; i >= 0; i--) {
+
+            int curr = heights[i];
+
+            while (s.top() != -1 &&
+                   heights[s.top()] >= curr) {
+                s.pop();
+            }
+
+            ans[i] = s.top();
+            s.push(i);
+        }
+
+        return ans;
+    }
+    vector<int> previousSmallerElement(vector<int> &arr, int n) {
+
+        stack<int> s;
+        s.push(-1);
+
+        vector<int> ans(n);
+
+        for (int i = 0; i < n; i++) {
+
+            int curr = arr[i];
+
+            while (s.top() != -1 &&
+                   arr[s.top()] >= curr) {
+                s.pop();
+            }
+
+            ans[i] = s.top();
+            s.push(i);
+        }
+
+        return ans;
+    }
+    int largestRectangleArea(vector<int> &heights) {
+
+        int n = heights.size();
+
+        vector<int> next = nextSmallerElement(heights, n);
+
+        vector<int> prev = previousSmallerElement(heights, n);
+
+        int area = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            int length = heights[i];
+
+            if (next[i] == -1) {
+                next[i] = n;
+            }
+
+            int breadth = next[i] - prev[i] - 1;
+
+            int newarea = length * breadth;
+
+            area = max(area, newarea);
+        }
+
+        return area;
+    }
+
+
 // 1. Recurrsion 
 int solve1(){
     // base case
@@ -31,7 +105,26 @@ int solve1(){
 }
 
 int maximalRectangle(vector<vector<char>> &matrix){
-    return solve1(matrix)
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+
+
+    int maxi = INT_MIN;
+    
+    vector<int>rowheight(cols, 0);
+
+    for(int i = 0; i < rows; i++){
+        // to create row height in array
+        for(int j = 0; j < rowheight.size(); j++){
+            if(matrix[i][j] == '1'){
+                rowheight[j]++;
+            }else{
+                rowheight[j] = 0;
+            }
+        }
+        maxi = max(maxi, largestRectangleArea(rowheight));
+    }
+    return maxi;
 }
 int main() {
     
