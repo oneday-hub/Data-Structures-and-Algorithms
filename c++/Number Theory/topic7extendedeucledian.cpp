@@ -1,4 +1,4 @@
-// Extended Euclidean algorithms Explained with Bezout's identity
+// lecture 17 : Extended Euclidean algorithms Explained with Bezout's identity
 /*
 2. Euclidean Algorithm
 
