@@ -10,7 +10,7 @@ void buildSegmentTree(int i, int l, int r, vector<int> &arr, vector<int> &segmen
 
     // base case : leaf node
     if(l == r){
-        return segmentTree[i] = arr[l];
+        segmentTree[i] = arr[l];
         return;
     }
 
@@ -41,7 +41,7 @@ int main() {
     //               i, l, r
     buildSegmentTree(0, 0, n-1, arr, segmentTree);
 
-    cout << "Segment Tree : " << endl;
+    cout << "Segment Tree : ";
 
     for(int i = 0; i < 2 * n - 1; i++){
         cout << segmentTree[i] << " ";
