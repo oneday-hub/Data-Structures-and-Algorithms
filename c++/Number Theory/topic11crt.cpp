@@ -2,6 +2,7 @@
 
 // To fully implement this follow the notes go through the proof for the better understanding
 // go through 2 and 3 times : 
+// https://github.com/yash7xm/cp_notes/blob/master/number_theory/Chinese%20Remainder%20Theorem.pdf
 
 #include <bits/stdc++.h>
 using namespace std;

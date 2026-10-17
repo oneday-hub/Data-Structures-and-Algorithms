@@ -38,8 +38,8 @@ int main() {
 Enter the rows : 3
 Enter the cols : 3
 The 4 directions : 
-(0,1)
-(2,1)
-(1,0)
-(1,2)
+(0,1) up
+(2,1) down
+(1,0) left
+(1,2) right
 */
